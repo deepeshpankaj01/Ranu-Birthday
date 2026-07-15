@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Ranu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Caveat:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FBF3E7;
+      --cream-deep: #F4E7D3;
+      --maroon: #7A2048;
+      --maroon-deep: #5A1734;
+      --marigold: #E8A33D;
+      --marigold-deep: #C97F1F;
+      --ink: #2B2320;
+      --green: #3C5B40;
+      --blush: #F4C6D0;
+      --card-shadow: 0 18px 40px -12px rgba(43, 35, 32, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+    }
+
+    .script {
+      font-family: 'Caveat', cursive;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(232, 163, 61, 0.18), transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(122, 32, 72, 0.14), transparent 50%),
+        var(--cream);
+      padding: 2rem 1.2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: var(--maroon);
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: riseIn 1s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 600;
+      color: var(--ink);
+      opacity: 0;
+      animation: riseIn 1s ease forwards 0.5s;
+    }
+
+    .hero .ranu-name {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(4.5rem, 16vw, 9rem);
+      color: var(--maroon);
+      line-height: 1;
+      margin: 0.2rem 0 1rem;
+      opacity: 0;
+      animation: riseIn 1.1s ease forwards 0.85s;
+    }
+
+    .hero p.sub {
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #5c4f47;
+      opacity: 0;
+      animation: riseIn 1s ease forwards 1.2s;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroll-cue {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--maroon-deep);
+      opacity: 0;
+      animation: riseIn 1s ease forwards 1.6s;
+    }
+
+    .scroll-cue span {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 38px;
+      background: var(--marigold-deep);
+      animation: pulseLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseLine {
+
+      0%,
+      100% {
+        transform: scaleY(0.6);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    /* petals */
+    .petal {
+      position: absolute;
+      top: -5%;
+      width: 14px;
+      height: 14px;
+      background: var(--marigold);
+      border-radius: 0 60% 0 60%;
+      opacity: 0.75;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(112vh) rotate(340deg);
+      }
+    }
+
+    /* ---------- GARLAND / GALLERY ---------- */
+    .gallery-wrap {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 6rem;
+    }
+
+    .thread-svg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 100%;
+      z-index: 0;
+      display: block;
+    }
+
+    .thread-svg path {
+      fill: none;
+      stroke: var(--marigold-deep);
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      color: var(--maroon);
+    }
+
+    .section-title p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--green);
+      margin-top: 0.3rem;
+    }
+
+    .memory {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      margin-bottom: 5.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .memory.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .memory:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .memory-photo {
+      flex: 0 0 auto;
+      width: min(78vw, 300px);
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 12px 12px 44px;
+      box-shadow: var(--card-shadow);
+      border-radius: 3px;
+    }
+
+    .memory:nth-child(odd) .polaroid {
+      transform: rotate(-3deg);
+    }
+
+    .memory:nth-child(even) .polaroid {
+      transform: rotate(3deg);
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.02);
+      transition: transform 0.4s ease;
+    }
+
+    .polaroid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+
+    .node-flower {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, var(--marigold) 0%, var(--marigold-deep) 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px var(--cream), 0 0 0 6px rgba(122, 32, 72, 0.25);
+      z-index: 2;
+    }
+
+    .memory-text {
+      flex: 1 1 auto;
+      padding: 0 0.6rem;
+    }
+
+    .memory-index {
+      font-family: 'Caveat', cursive;
+      color: var(--marigold-deep);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .memory-text p.caption {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      line-height: 1.5;
+      color: var(--ink);
+      margin-top: 0.4rem;
+    }
+
+    /* ---------- CLOSING ---------- */
+    .closing {
+      position: relative;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--maroon) 120%);
+      padding: 5rem 1.4rem 4rem;
+      text-align: center;
+      color: var(--cream);
+      overflow: hidden;
+    }
+
+    .closing-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: rgba(251, 243, 231, 0.96);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 3rem 2rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .closing-card h2 {
+      color: var(--maroon);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 1.2rem;
+    }
+
+    .closing-card p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #4a3f39;
+      text-align: left;
+    }
+
+    .signature {
+      margin-top: 1.8rem;
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: var(--maroon-deep);
+      text-align: right;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(251, 243, 231, 0.65);
+      background: var(--maroon);
+    }
+
+    @media (max-width:720px) {
+
+      .memory,
+      .memory:nth-child(even) {
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 4rem;
+      }
+
+      .memory-photo {
+        width: min(82vw, 320px);
+      }
+
+      .thread-svg {
+        left: 14px;
+        transform: none;
+        width: 4px;
+      }
+
+      .node-flower {
+        left: 14px;
+      }
+
+      .memory-text {
+        text-align: center;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-eyebrow">A little something from your brother</div>
+    <h1>Happy Birthday</h1>
+    <div class="ranu-name">Ranu</div>
+    <p class="sub">Fifteen photographs. Fifteen small proofs that the years have only made you brighter, braver and more
+      loved than the one before it.</p>
+    <div class="scroll-cue">
+      <span>Scroll down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="gallery-wrap">
+    <svg class="thread-svg" id="threadSvg" preserveAspectRatio="none">
+      <path id="threadPath" d=""></path>
+    </svg>
+
+    <div class="section-title">
+      <h2>A Thread Through Every Memory</h2>
+      <p>— like a garland, one flower at a time —</p>
+    </div>
+
+    <div id="memories"></div>
+  </div>
+
+  <section class="closing">
+    <div class="closing-card">
+      <h2>To My Ranu</h2>
+      <p>
+        No gift I could wrap will ever hold as much as these small, ordinary moments do. So this year, instead of
+        something you'd unwrap and set aside, I wanted to give you something you could always come back to — every
+        smile, every trip, every silly pose we've shared along the way.
+        <br><br>
+        Keep shining exactly the way you do. Keep laughing the way that makes everyone around you laugh too. And know
+        that no matter how far apart we ever are, you will always be the one I look out for, and the one I'm proudest
+        of.
+        <br><br>
+        Happy Birthday. Here's to another year of memories worth saving.
+      </p>
+      <div class="signature">— Your Deepesh Bhai</div>
+    </div>
+  </section>
+
+  <footer>MADE WITH LOVE, FOR RANU'S BIRTHDAY</footer>
+
+  <script>
+    // ---------- Photo + caption data ----------
+    const memories = [
+      { src: "assets/photos/photo01.jpg", caption: "That smile — the one that's made every hard day softer, for as long as I can remember." },
+      { src: "assets/photos/photo02.jpg", caption: "Dressed for a celebration, and glowing like one too." },
+      { src: "assets/photos/photo03.jpg", caption: "The best days are the ones spent laughing with people who feel like home." },
+      { src: "assets/photos/photo04.jpg", caption: "Some walls are painted bright. Some people brighten every wall they stand against." },
+      { src: "assets/photos/photo05.jpg", caption: "No caption needed for a moment this easy." },
+      { src: "assets/photos/photo06.jpg", caption: "Still the very same warm smile from when we were kids." },
+      { src: "assets/photos/photo07.jpg", caption: "Thumbs up to every memory we've built together, and every one still to come." },
+      { src: "assets/photos/photo08.jpg", caption: "Barefoot on green grass, completely at peace with the world." },
+      { src: "assets/photos/photo09.jpg", caption: "Standing tall in front of something timeless, just like your spirit." },
+      { src: "assets/photos/photo10.jpg", caption: "Some things never change — you'll always be the one I carry, and the one who carries me." },
+      { src: "assets/photos/photo11.jpg", caption: "Playful, bright, and completely, wonderfully you." },
+      { src: "assets/photos/photo12.jpg", caption: "A flower in your hair, and sunshine in your smile." },
+      { src: "assets/photos/photo13.jpg", caption: "Simple day, simple smile, simply unforgettable." },
+      { src: "assets/photos/photo14.jpg", caption: "Grace looks a lot like this." },
+      { src: "assets/photos/photo15.jpg", caption: "All dressed up, for a day worth remembering." },
+    ];
+
+    const container = document.getElementById('memories');
+    memories.forEach((m, i) => {
+      const el = document.createElement('div');
+      el.className = 'memory';
+      el.innerHTML = `
+    <div class="memory-photo">
+      <div class="polaroid">
+        <img src="${m.src}" alt="Memory ${i + 1} of Ranu" loading="lazy">
+      </div>
+    </div>
+    <div class="node-flower"></div>
+    <div class="memory-text">
+      <div class="memory-index">Memory No. ${String(i + 1).padStart(2, '0')}</div>
+      <p class="caption">"${m.caption}"</p>
+    </div>
+  `;
+      container.appendChild(el);
+    });
+
+    // ---------- Reveal on scroll ----------
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('.memory').forEach(m => io.observe(m));
+
+    // ---------- Garland thread draw ----------
+    const svg = document.getElementById('threadSvg');
+    const path = document.getElementById('threadPath');
+    const wrap = document.querySelector('.gallery-wrap');
+
+    function sizeThread() {
+      const h = wrap.offsetHeight;
+      svg.setAttribute('height', h);
+      svg.setAttribute('viewBox', `0 0 6 ${h}`);
+      path.setAttribute('d', `M3,0 L3,${h}`);
+      const len = path.getTotalLength();
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+      return len;
+    }
+    let pathLen = sizeThread();
+
+    function updateThread() {
+      const rect = wrap.getBoundingClientRect();
+      const winH = window.innerHeight;
+      const total = rect.height;
+      const scrolled = Math.min(Math.max(winH * 0.6 - rect.top, 0), total);
+      const progress = Math.min(scrolled / total, 1);
+      path.style.strokeDashoffset = pathLen * (1 - progress);
+    }
+
+    window.addEventListener('scroll', updateThread, { passive: true });
+    window.addEventListener('resize', () => { pathLen = sizeThread(); updateThread(); });
+    updateThread();
+
+    // ---------- Falling petals in hero ----------
+    const hero = document.querySelector('.hero');
+    const petalColors = ['#E8A33D', '#C97F1F', '#F4C6D0'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.background = petalColors[i % petalColors.length];
+      const duration = 6 + Math.random() * 6;
+      const delay = Math.random() * 8;
+      p.style.animationDuration = duration + 's';
+      p.style.animationDelay = delay + 's';
+      p.style.width = p.style.height = (8 + Math.random() * 10) + 'px';
+      hero.appendChild(p);
+    }
+  </script>
+
+</body>
+
+</html>
